@@ -1,11 +1,27 @@
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import BIRDS from "vanta/dist/vanta.birds.min";
 
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
 
 const Hero = () => {
+  const [vantaEffect, setVantaEffect] = useState(null);
+  const myRef = useRef(null);
+  useEffect(() => {
+    if (!vantaEffect) {
+      setVantaEffect(
+        BIRDS({
+          el: myRef.current,
+        })
+      );
+    }
+    return () => {
+      if (vantaEffect) vantaEffect.destroy();
+    };
+  }, [vantaEffect]);
   return (
-    <section className={`relative w-full h-screen mx-auto`}>
+    <section className={`relative w-full h-screen mx-auto`} ref={myRef}>
       <div
         className={`absolute inset-0 top-[120px]  max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
       >
@@ -15,14 +31,17 @@ const Hero = () => {
         </div>
 
         <div>
+          <p className={`${styles.heroSubText} mt-2 text-white-100`}>
+            My name is Mike
+          </p>
           <h1 className={`${styles.heroHeadText} text-white`}>
             I build fast and beautiful{" "}
             <span className="text-[#915EFF]">User Interfaces</span>
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            that prioritizes clarity, consistency, feedback, simplicity,
-            aesthetics, and accessibility, ensuring intuitive,
-            efficient, and inclusive user experiences across all platforms.
+            that prioritizes clarity, consistency, simplicity,
+            <br /> and accessibility, ensuring intuitive, and inclusive
+            <br /> user experiences across all platforms.
           </p>
         </div>
       </div>

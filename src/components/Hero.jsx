@@ -1,9 +1,42 @@
 import React, { useState, useEffect, useRef } from "react";
+import Tilt from "react-tilt";
 import { motion } from "framer-motion";
+
+import { services } from "../constants";
+import { SectionWrapper } from "../hoc";
+import { fadeIn, textVariant } from "../utils/motion";
+
 import BIRDS from "vanta/dist/vanta.birds.min";
 
 import { styles } from "../styles";
-import { ComputersCanvas } from "./canvas";
+
+const ServiceCard = ({ index, title, icon }) => (
+  <Tilt className="xs:w-[250px] w-full">
+    <motion.div
+      variants={fadeIn("right", "spring", index * 0.5, 0.75)}
+      className="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card"
+    >
+      <div
+        options={{
+          max: 45,
+          scale: 1,
+          speed: 450,
+        }}
+        className="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col"
+      >
+        <img
+          src={icon}
+          alt="web-development"
+          className="w-16 h-16 object-contain"
+        />
+
+        <h3 className="text-white text-[20px] font-bold text-center">
+          {title}
+        </h3>
+      </div>
+    </motion.div>
+  </Tilt>
+);
 
 const Hero = () => {
   const [vantaEffect, setVantaEffect] = useState(null);
@@ -23,7 +56,7 @@ const Hero = () => {
   return (
     <section className={`relative w-full h-screen mx-auto`} ref={myRef}>
       <div
-        className={`absolute inset-0 top-[120px]  max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
+        className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
       >
         <div className="flex flex-col justify-center items-center mt-5">
           <div className="w-5 h-5 rounded-full bg-[#915EFF]" />
@@ -44,6 +77,14 @@ const Hero = () => {
             <br /> user experiences across all platforms.
           </p>
         </div>
+      </div>
+
+      <div
+        className={`absolute inset-0 top-[120px]  max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
+      >
+        {services.map((service, index) => (
+          <ServiceCard key={service.title} index={index} {...service} />
+        ))}
       </div>
 
       <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">

@@ -22,7 +22,7 @@ const ServiceCard = ({ index, title, icon }) => (
           scale: 1,
           speed: 450,
         }}
-        className="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col"
+        className="bg-tertiary rounded-[20px] py-5 px-12 flex items-center flex-col"
       >
         <img
           src={icon}
@@ -46,6 +46,16 @@ const Hero = () => {
       setVantaEffect(
         BIRDS({
           el: myRef.current,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.0,
+          minWidth: 200.0,
+          scale: 1.0,
+          scaleMobile: 1.0,
+          backgroundColor: 0xffffff,
+          color1: 0x624fc3,
+          wingSpan: 21.0,
         })
       );
     }
@@ -76,15 +86,15 @@ const Hero = () => {
             <br /> and accessibility, ensuring intuitive, and inclusive
             <br /> user experiences across all platforms.
           </p>
-        </div>
-      </div>
 
-      <div
-        className={`absolute inset-0 top-[120px]  max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
-      >
-        {services.map((service, index) => (
-          <ServiceCard key={service.title} index={index} {...service} />
-        ))}
+          <div
+            className={`flex flex-row items-start gap-5 mt-6`}
+          >
+            {services.map((service, index) => (
+              <ServiceCard key={service.title} index={index} {...service} />
+            ))}
+          </div>
+        </div>
       </div>
 
       <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">

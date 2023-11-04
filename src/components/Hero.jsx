@@ -22,7 +22,7 @@ const ServiceCard = ({ index, title, icon }) => (
           scale: 1,
           speed: 450,
         }}
-        className="bg-tertiary rounded-[20px] py-5 px-12 flex items-center flex-col"
+        className="rounded-[20px] py-5 px-12 flex items-center flex-col"
       >
         <img
           src={icon}
@@ -68,28 +68,27 @@ const Hero = () => {
       <div
         className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
       >
-        <div className="flex flex-col justify-center items-center mt-5">
-          <div className="w-5 h-5 rounded-full bg-[#915EFF]" />
-          <div className="w-1 sm:h-80 h-40 violet-gradient" />
-        </div>
+
 
         <div>
-          <p className={`${styles.heroSubText} mt-2 text-white-100`}>
+          <p className={`${styles.heroSubText} text-[#080808] mt-2 font-light`}>
             My name is Mike
           </p>
-          <h1 className={`${styles.heroHeadText} text-white`}>
+          <h1
+            className={`${styles.heroHeadText} text-[#080808] font-extrabold`}
+          >
             I build fast and beautiful{" "}
-            <span className="text-[#915EFF]">User Interfaces</span>
+            <span className="text-[#915EFF] font-extrabold">
+              User Interfaces
+            </span>
           </h1>
-          <p className={`${styles.heroSubText} mt-2 text-white-100`}>
+          <p className={`${styles.heroSubText} mt-2 text-[#080808] font-light`}>
             that prioritizes clarity, consistency, simplicity,
             <br /> and accessibility, ensuring intuitive, and inclusive
             <br /> user experiences across all platforms.
           </p>
 
-          <div
-            className={`flex flex-row items-start gap-5 mt-6`}
-          >
+          <div className={`flex flex-row items-start gap-5 mt-9`}>
             {services.map((service, index) => (
               <ServiceCard key={service.title} index={index} {...service} />
             ))}

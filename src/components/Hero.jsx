@@ -68,11 +68,9 @@ const Hero = () => {
       <div
         className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
       >
-
-
         <div>
           <p className={`${styles.heroSubText} text-[#080808] mt-2 font-light`}>
-            My name is Mike
+            Call me Mike
           </p>
           <h1
             className={`${styles.heroHeadText} text-[#080808] font-extrabold`}
@@ -82,12 +80,15 @@ const Hero = () => {
               User Interfaces
             </span>
           </h1>
-          <p className={`${styles.heroSubText} mt-2 text-[#080808] font-light`}>
-            that prioritizes clarity, consistency, simplicity,
-            <br /> and accessibility, ensuring intuitive, and inclusive
-            <br /> user experiences across all platforms.
+          <p
+            className={`${styles.heroSubText} mt-5 text-[#080808] font-semibold`}
+          >
+            that prioritize clarity, consistency, and
+            <br /> accessibility, for enterprise cross-device experiences.
           </p>
-
+          <p className={`${styles.heroSubText} mt-7 text-[#080808] font-light`}>
+            My expertise is concentrated in the following domains.
+          </p>
           <div className={`flex flex-row items-start gap-5 mt-9`}>
             {services.map((service, index) => (
               <ServiceCard key={service.title} index={index} {...service} />
